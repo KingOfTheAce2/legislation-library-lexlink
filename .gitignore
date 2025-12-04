@@ -1,0 +1,40 @@
+# Dependencies & Cache
+npm-cache/
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE & Editor
+.claude
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Old schema files (deprecated - use v2 human-readable names)
+schema_source_documents.csv
+schema_term_occurrences.csv
+legislation_terms_cleaned.csv
+legislation_terms_cleaned.tsv
+
+# Backup files
+*.backup
+*.bak
+*_old.*
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.local
+
+# Build output
+dist/
+build/
+_site/
