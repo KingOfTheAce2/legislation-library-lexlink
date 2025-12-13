@@ -1,0 +1,15 @@
+# Python dependencies for legislation-library-lexlink
+
+# TMX parsing and encoding detection
+chardet>=5.0.0
+
+# Data processing (usually built-in, but listed for clarity)
+# xml.etree.ElementTree (built-in)
+# csv (built-in)
+# uuid (built-in)
+# pathlib (built-in)
+
+# Future dependencies for advanced features
+# pandas>=2.0.0  # For advanced data manipulation
+# lxml>=4.9.0    # For more robust XML parsing
+# neo4j>=5.0.0   # For knowledge graph (optional)

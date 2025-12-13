@@ -1,0 +1,112 @@
+{
+  "example": "How to link dictionary entry to treaty XML source",
+  "architecture": "Modular separation with UUID-based linking",
+
+  "1_dictionary_entry": {
+    "id": "a7714aec-7e41-4852-a905-82443caa2dab",
+    "source": "Verdrag",
+    "lang_source": "nl-nl",
+    "target": "Abkommen",
+    "lang_target": "de-de",
+    "author": "van Gassen",
+    "license": "All rights reserved",
+    "sme_reviewed": true,
+    "premium": false,
+    "lang_target_dict": null
+  },
+
+  "2_source_document": {
+    "doc_id": "bwbv0005862-2022-07-31",
+    "doc_type": "treaty",
+    "doc_subtype": "tax_treaty",
+    "title": "Verdrag tussen het Koninkrijk der Nederlanden en de Bondsrepubliek Duitsland tot het vermijden van dubbele belasting",
+    "title_de": "Abkommen zwischen dem Königreich der Niederlande und der Bundesrepublik Deutschland zur Vermeidung der Doppelbesteuerung",
+    "parties": ["Netherlands", "Germany"],
+    "languages": ["nl-nl", "de-de"],
+    "date": "2022-07-31",
+    "file_path": "legislation/netherlands/BWBV0005862_2022-07-31_0/BWBV0005862_2022-07-31_0.xml",
+    "url": "https://wetten.overheid.nl/BWBV0005862/2022-07-31",
+    "jurisdiction": "international",
+    "status": "in_force"
+  },
+
+  "3_term_occurrence_link": {
+    "occurrence_id": "occ-001",
+    "term_id": "a7714aec-7e41-4852-a905-82443caa2dab",
+    "doc_id": "bwbv0005862-2022-07-31",
+    "location": {
+      "xpath": "//meta-data/titelcollectie/titel[@naam='officiele-titel']",
+      "element_type": "title",
+      "article_id": null,
+      "paragraph_id": null,
+      "sentence_offset": 0
+    },
+    "context": {
+      "nl": "Verdrag tussen het Koninkrijk der Nederlanden en de Bondsrepubliek Duitsland tot het vermijden van dubbele belasting op het gebied van belastingen naar het inkomen en het ontgaan van belasting",
+      "de": "Abkommen zwischen dem Königreich der Niederlande und der Bundesrepublik Deutschland zur Vermeidung der Doppelbesteuerung auf dem Gebiet der Steuern vom Einkommen und zur Verhinderung der Steuerverkürzung"
+    },
+    "term_frequency_in_doc": 47,
+    "is_title_term": true
+  },
+
+  "4_example_retrieval_query": {
+    "query": "Get all treaty examples for term 'Verdrag'",
+    "steps": [
+      "1. Look up term_id from dictionary where source='Verdrag'",
+      "2. Query term_occurrences where term_id='a7714aec-7e41-4852-a905-82443caa2dab'",
+      "3. Join with source_documents to get treaty metadata",
+      "4. Parse XML using xpath to extract context sentences",
+      "5. Return bilingual examples with citations"
+    ],
+    "result": {
+      "term": "Verdrag",
+      "translation": "Abkommen",
+      "examples": [
+        {
+          "source_nl": "Verdrag tussen het Koninkrijk der Nederlanden en de Bondsrepubliek Duitsland...",
+          "source_de": "Abkommen zwischen dem Königreich der Niederlande und der Bundesrepublik Deutschland...",
+          "citation": "NL-DE Tax Treaty (BWBV0005862), 2022-07-31, Title",
+          "url": "https://wetten.overheid.nl/BWBV0005862/2022-07-31"
+        }
+      ]
+    }
+  },
+
+  "5_document_type_taxonomy": {
+    "note": "Important to categorize correctly",
+    "types": {
+      "legislation": {
+        "description": "National laws enacted by legislature",
+        "examples": ["Acts", "Statutes", "Codes"],
+        "jurisdiction": "national"
+      },
+      "treaty": {
+        "description": "International agreements between states",
+        "examples": ["Tax treaties", "Bilateral agreements", "Conventions"],
+        "jurisdiction": "international",
+        "subtypes": {
+          "tax_treaty": "Double taxation avoidance agreements",
+          "trade_agreement": "Trade and commerce agreements",
+          "extradition_treaty": "Criminal extradition agreements"
+        }
+      },
+      "regulation": {
+        "description": "Administrative rules",
+        "examples": ["Ministerial decrees", "EU regulations"],
+        "jurisdiction": "varies"
+      },
+      "case_law": {
+        "description": "Court decisions",
+        "examples": ["Supreme Court rulings", "Court of Justice decisions"],
+        "jurisdiction": "varies"
+      }
+    }
+  },
+
+  "6_scalability_notes": {
+    "add_new_treaty": "Create new doc_id, extract terms, link via term_occurrences",
+    "add_new_language": "Add translation pairs to dictionary, link to same doc_id if multilingual treaty exists",
+    "add_case_law": "New doc_type='case_law', same linking mechanism",
+    "query_by_context": "Filter term_occurrences by doc_type='treaty' or doc_subtype='tax_treaty'"
+  }
+}
